@@ -1,27 +1,26 @@
 import React, {useState} from 'react'
 import { Bar } from 'react-chartjs-2'
-
+import {ReactJsonExcel} from 'react-json-excel'
+import data from '../data/data.json'
 function BarChart() {
-  const [data, setData] = useState({
-    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  const labels = data.dt.map(val=>val.label)
+  const dataVal = data.dt.map(val=>val.value)
+  const [dataChart, setDataChart] = useState({
+    labels: labels,
     datasets: [
       {
         label: "Videos Mades",
         backgroundColor: "#ffbe76",
-        data: [65, 59, 80, 81, 56, 55, 40]
+        data: dataVal
       },
-      {
-        label: "Subscriptions",
-        backgroundColor: "#badc58",
-        data: [5, 9, 40, 51, 26, 105, 30]
-      }
     ]
   })
   return (
     <>
       <h3>BarChart Example</h3>
+
       <Bar
-        data={data}
+        data={dataChart}
       />
     </>
   )
