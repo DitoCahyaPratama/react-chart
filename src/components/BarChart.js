@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Bar } from 'react-chartjs-2'
-import {
-  JsonToExcel
-} from 'react-json-excel';
+
+import ExcelJS from 'exceljs/dist/es5/exceljs.browser'
+import { saveAs } from 'file-saver'
+
 import { Button } from 'antd';
 import data from '../data/data.json'
 function BarChart() {
